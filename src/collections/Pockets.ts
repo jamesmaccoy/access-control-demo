@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 import { isAdmin } from '../access/isAdmin';
-import { isAdminOrHasSiteAccessOrPublished } from '../access/isAdminHasSiteAccessOrPublished';
-import { isAdminOrHasSiteAccess } from '../access/isAdminOrHasSiteAccess';
+import { isAdminOrHasSiteAccessOrPublished } from '../access/isAdminHasPolicyAccessOrPublished';
+import { isAdminOrHasSiteAccess } from '../access/isAdminOrHasPolicyAccess';
 import { isLoggedIn } from '../access/isLoggedIn';
 
 export const Pockets: CollectionConfig = {

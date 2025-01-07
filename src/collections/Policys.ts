@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import { isAdmin } from "../access/isAdmin";
-import { isAdminOrHasSiteAccess } from "../access/isAdminOrHasSiteAccess";
+import { isAdminOrHasSiteAccess } from "../access/isAdminOrHasPolicyAccess";
 
 export const Policys: CollectionConfig = {
   slug: 'policys',
