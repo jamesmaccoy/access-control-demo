@@ -2,8 +2,8 @@ import { CollectionConfig } from "payload/types";
 import { isAdmin } from "../access/isAdmin";
 import { isAdminOrHasSiteAccess } from "../access/isAdminOrHasSiteAccess";
 
-export const Sites: CollectionConfig = {
-  slug: 'sites',
+export const Policys: CollectionConfig = {
+  slug: 'policys',
   admin: {
     useAsTitle: 'title',
   },

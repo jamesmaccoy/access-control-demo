@@ -1,10 +1,10 @@
 import { buildConfig } from 'payload/config';
 import path from 'path';
 import { Users } from './collections/Users';
-import { Sites } from './collections/Sites';
+import { Policys } from './collections/Policys';
 import { Media } from './collections/Media';
 import { ContactRequests } from './collections/ContactRequests';
-import { Pages } from './collections/Pages';
+import { Pockets } from './collections/Pockets';
 import { seed } from './seed';
 
 export default buildConfig({
@@ -14,8 +14,8 @@ export default buildConfig({
   collections: [
     ContactRequests,
     Media,
-    Pages,
-    Sites,
+    Pockets,
+    Policys,
     Users,
   ],
   typescript: {
