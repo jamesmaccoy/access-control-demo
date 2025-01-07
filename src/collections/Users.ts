@@ -64,11 +64,11 @@ export const Users: CollectionConfig = {
       ]
     },
     {
-      name: 'sites',
+      name: 'policys',
       // Save this field to JWT so we can use from `req.user`
       saveToJWT: true,
       type: 'relationship',
-      relationTo: 'sites',
+      relationTo: 'policys',
       hasMany: true,
       access: {
         // Only admins can create or update a value for this field
