@@ -1,26 +1,26 @@
 import { Access } from "payload/config";
 
-export const isAdminOrHasSiteAccess = (siteIDFieldName: string = 'site'): Access => ({ req: { user } }) => {
+export const isAdminOrHasPolicyAccess = (policyIDFieldName: string = 'policy'): Access => ({ req: { user } }) => {
   // Need to be logged in
   if (user) {
     // If user has role of 'admin'
     if (user.roles.includes('admin')) return true;
 
-    // If user has role of 'editor' and has access to a site,
+    // If user has role of 'editor' and has access to a policy,
     // return a query constraint to restrict the documents this user can edit
-    // to only those that are assigned to a site, or have no site assigned
-    if (user.roles.includes('editor') && user.sites?.length > 0) {
+    // to only those that are assigned to a policy, or have no policy assigned
+    if (user.roles.includes('editor') && user.policys?.length > 0) {
 
-      // Otherwise, we can restrict it based on the `site` field
+      // Otherwise, we can restrict it based on the `policy` field
       return {
         or: [
           {
-            [siteIDFieldName]: {
-              in: user.sites
+            [policyIDFieldName]: {
+              in: user.policys
             }
           },
           {
-            [siteIDFieldName]: {
+            [policyIDFieldName]: {
               exists: false,
             }
           }

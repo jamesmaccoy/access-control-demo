@@ -1,18 +1,18 @@
 import { Payload } from "payload";
-import { User, Page, Site } from "./payload-types";
+import { User, Page, Policy } from "./payload-types";
 
 export const seed = async (payload: Payload): Promise<void> => {
-  const site1 = await payload.create<Site>({
-    collection: 'sites',
+  const policy1 = await payload.create<Policy>({
+    collection: 'policys',
     data: {
-      title: 'Site 1',
+      title: 'Policy 1',
     }
   });
 
-  const site2 = await payload.create<Site>({
-    collection: 'sites',
+  const policy2 = await payload.create<Policy>({
+    collection: 'policys',
     data: {
-      title: 'Site 2',
+      title: 'Policy 2',
     }
   });
 
@@ -33,49 +33,49 @@ export const seed = async (payload: Payload): Promise<void> => {
   await payload.create<User>({
     collection: 'users',
     data: {
-      email: 'site1@payloadcms.com',
+      email: 'policy1@payloadcms.com',
       password: 'test',
-      firstName: 'Site1',
+      firstName: 'Policy1',
       lastName: 'User',
-      sites: [site1.id]
+      policys: [policy1.id]
     }
   })
 
-  // This page will be created and assigned to Site 1
+  // This page will be created and assigned to policy 1
   await payload.create<Page>({
     collection: 'pages',
     data: {
       _status: 'published',
-      title: 'Site 1 Home',
+      title: 'policy 1 Home',
       content: [
         {
           children: [
             {
-              text: "Here's some content for Site 1's home page."
+              text: "Here's some content for policy 1's home page."
             }
           ]
         }
       ],
-      site: site1.id
+      policy: policy1.id
     }
   })
 
-  // This page will be created and assigned to Site 2
+  // This page will be created and assigned to policy 2
   await payload.create<Page>({
     collection: 'pages',
     data: {
       _status: 'published',
-      title: 'Site 2 Home',
+      title: 'Policy 2 Home',
       content: [
         {
           children: [
             {
-              text: "Here's some content for Site 2's home page."
+              text: "Here's some content for policy 2's home page."
             }
           ]
         }
       ],
-      site: site2.id
+      policy: policy2.id
     }
   })
 }

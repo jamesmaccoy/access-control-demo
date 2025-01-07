@@ -23,7 +23,7 @@ export interface ContactRequest {
 export interface Media {
   id: string;
   alt: string;
-  site: string | Site;
+  policy: string | Policy;
   url?: string;
   filename?: string;
   mimeType?: string;
@@ -37,7 +37,7 @@ export interface Media {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sites".
  */
-export interface Site {
+export interface Policy {
   id: string;
   title: string;
   createdAt: string;
@@ -47,13 +47,13 @@ export interface Site {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
-export interface Page {
+export interface Pocket {
   id: string;
   title: string;
   content?: {
     [k: string]: unknown;
   }[];
-  site: string | Site;
+  policy: string | Policy;
   _status?: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;
@@ -67,7 +67,7 @@ export interface User {
   firstName: string;
   lastName: string;
   roles?: ('admin' | 'editor')[];
-  sites?: string[] | Site[];
+  policys?: string[] | Policy[];
   email?: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;

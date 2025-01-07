@@ -23,15 +23,15 @@ export const Media: CollectionConfig = {
       required: true,
     },
     {
-      name: 'site',
+      name: 'policy',
       type: 'relationship',
-      relationTo: 'sites',
+      relationTo: 'policys',
       required: true,
       // If user is not admin, set the site by default
       // to the first site that they have access to
       defaultValue: ({ user }) => {
-        if (!user.roles.includes('admin') && user.sites?.[0]) {
-          return user.sites[0];
+        if (!user.roles.includes('admin') && user.policys?.[0]) {
+          return user.policys[0];
         }
       }
     }
