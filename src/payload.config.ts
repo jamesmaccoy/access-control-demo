@@ -10,6 +10,7 @@ import { seed } from './seed';
 export default buildConfig({
   admin: {
     user: Users.slug,
+    logo: path.resolve(__dirname, '../../assets/logo.svg')
   },
   collections: [
     ContactRequests,
