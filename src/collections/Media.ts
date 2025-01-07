@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import { isAdmin } from "../access/isAdmin";
-import { isAdminOrHasSiteAccess } from "../access/isAdminOrHasPolicyAccess";
+import { isAdminOrHasPolicyAccess } from "../access/isAdminOrHasPolicyAccess";
 import { isLoggedIn } from "../access/isLoggedIn";
 
 export const Media: CollectionConfig = {
@@ -9,12 +9,12 @@ export const Media: CollectionConfig = {
   access: {
     // Anyone logged in can create
     create: isLoggedIn,
-    // Only admins or editors with site access can update
-    update: isAdminOrHasSiteAccess(),
-    // Only admins or editors with site access can read
-    read: isAdminOrHasSiteAccess(),
-    // Only admins or editors with site access can delete
-    delete: isAdminOrHasSiteAccess(),
+    // Only admins or editors with policy access can update
+    update: isAdminOrHasPolicyAccess(),
+    // Only admins or editors with policy access can read
+    read: isAdminOrHasPolicyAccess(),
+    // Only admins or editors with policy access can delete
+    delete: isAdminOrHasPolicyAccess(),
   },
   fields: [
     {
@@ -27,8 +27,8 @@ export const Media: CollectionConfig = {
       type: 'relationship',
       relationTo: 'policys',
       required: true,
-      // If user is not admin, set the site by default
-      // to the first site that they have access to
+      // If user is not admin, set the policy by default
+      // to the first policy that they have access to
       defaultValue: ({ user }) => {
         if (!user.roles.includes('admin') && user.policys?.[0]) {
           return user.policys[0];
