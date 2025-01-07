@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 import { isAdmin } from '../access/isAdmin';
-import { isAdminOrHasSiteAccessOrPublished } from '../access/isAdminHasPolicyAccessOrPublished';
-import { isAdminOrHasSiteAccess } from '../access/isAdminOrHasPolicyAccess';
+import { isAdminOrHasPolicyAccessOrPublished } from '../access/isAdminHasPolicyAccessOrPublished';
+import { isAdminOrHasPolicyAccess } from '../access/isAdminOrHasPolicyAccess';
 import { isLoggedIn } from '../access/isLoggedIn';
 
 export const Pockets: CollectionConfig = {
@@ -15,11 +15,11 @@ export const Pockets: CollectionConfig = {
   access: {
     // Anyone logged in can create
     create: isLoggedIn,
-    // Only admins or editors with site access can update
-    update: isAdminOrHasSiteAccess(),
-    // Admins or editors with site access can read,
+    // Only admins or editors with Policy access can update
+    update: isAdminOrHasPolicyAccess(),
+    // Admins or editors with Policy access can read,
     // otherwise users not logged in can only read published
-    read: isAdminOrHasSiteAccessOrPublished,
+    read: isAdminOrHasPolicyAccessOrPublished,
     // Only admins can delete
     delete: isAdmin,
   },
@@ -38,8 +38,8 @@ export const Pockets: CollectionConfig = {
       type: 'relationship',
       relationTo: 'policys',
       required: true,
-      // If user is not admin, set the site by default
-      // to the first site that they have access to
+      // If user is not admin, set the Policy by default
+      // to the first Policy that they have access to
       defaultValue: ({ user }) => {
         if (!user.roles.includes('admin') && user.policys?.[0]) {
           return user.policys[0];
