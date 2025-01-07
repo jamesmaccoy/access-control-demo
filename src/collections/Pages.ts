@@ -5,7 +5,7 @@ import { isAdminOrHasSiteAccess } from '../access/isAdminOrHasSiteAccess';
 import { isLoggedIn } from '../access/isLoggedIn';
 
 export const Pages: CollectionConfig = {
-  slug: 'pages',
+  slug: 'pockets',
   admin: {
     useAsTitle: 'title',
   },
