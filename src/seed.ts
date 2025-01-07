@@ -1,5 +1,5 @@
 import { Payload } from "payload";
-import { User, Page, Policy } from "./payload-types";
+import { User, Pocket, Policy } from "./payload-types";
 
 export const seed = async (payload: Payload): Promise<void> => {
   const policy1 = await payload.create<Policy>({
@@ -41,9 +41,9 @@ export const seed = async (payload: Payload): Promise<void> => {
     }
   })
 
-  // This page will be created and assigned to policy 1
-  await payload.create<Page>({
-    collection: 'pages',
+  // This pocket will be created and assigned to policy 1
+  await payload.create<Pocket>({
+    collection: 'pockets',
     data: {
       _status: 'published',
       title: 'policy 1 Home',
@@ -51,7 +51,7 @@ export const seed = async (payload: Payload): Promise<void> => {
         {
           children: [
             {
-              text: "Here's some content for policy 1's home page."
+              text: "Here's some content for policy 1's home pocket."
             }
           ]
         }
@@ -60,9 +60,9 @@ export const seed = async (payload: Payload): Promise<void> => {
     }
   })
 
-  // This page will be created and assigned to policy 2
-  await payload.create<Page>({
-    collection: 'pages',
+  // This pocket will be created and assigned to policy 2
+  await payload.create<Pocket>({
+    collection: 'pockets',
     data: {
       _status: 'published',
       title: 'Policy 2 Home',
@@ -70,7 +70,7 @@ export const seed = async (payload: Payload): Promise<void> => {
         {
           children: [
             {
-              text: "Here's some content for policy 2's home page."
+              text: "Here's some content for policy 2's home pocket."
             }
           ]
         }
