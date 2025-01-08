@@ -6,11 +6,18 @@ import { Media } from './collections/Media';
 import { ContactRequests } from './collections/ContactRequests';
 import { Pockets } from './collections/Pockets';
 import { seed } from './seed';
+import { MyCustomLogo } from './graphics/logo' 
 
 export default buildConfig({
   admin: {
     user: Users.slug,
-    logo: path.resolve(__dirname, '../../assets/logo.svg')
+    components: {
+      graphics: {
+          //Icon: 'graphics/Icon/index.tsx#Icon',
+          Logo: MyCustomLogo,
+      },
+  },
+
   },
   collections: [
     ContactRequests,
