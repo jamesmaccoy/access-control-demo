@@ -6,14 +6,15 @@ import { Media } from './collections/Media';
 import { ContactRequests } from './collections/ContactRequests';
 import { Pockets } from './collections/Pockets';
 import { seed } from './seed';
-import { MyCustomLogo } from './graphics/logo' 
+import { MyCustomLogo } from './graphics/logo';
+import { myCustomIcon } from './graphics/Icon';
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     components: {
       graphics: {
-          //Icon: 'graphics/Icon/index.tsx#Icon',
+          Icon: myCustomIcon,
           Logo: MyCustomLogo,
       },
   },
